@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tunggu dulu...</title>
+
+<style>
+body{
+  background:#111;
+  color:white;
+  font-family:sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  text-align:center;
+}
+
+#timer{
+  font-size:45px;
+  margin-top:20px;
+}
+
+#link{
+  margin-top:25px;
+  font-size:20px;
+  display:none;
+}
+
+a{
+  color:#00ffcc;
+}
+</style>
+
+</head>
+<body>
+
+<div>
+<h1>hahaha..... penasaran ya 🤣</h1>
+<p>tunggu sebentar ya 😁</p>
+
+<div id="timer">loading...</div>
+
+<div id="link">
+<a href="https://gemini.google.com/share/d0d0befc55a2" target="_blank">
+Klik di sini 😁
+</a>
+</div>
+
+</div>
+
+<script>
+
+// target jam 10:00 hari ini
+let target = new Date();
+target.setHours(10,0,0,0);
+
+let hitung = setInterval(function(){
+
+let sekarang = new Date().getTime();
+let sisa = target - sekarang;
+
+let menit = Math.floor((sisa % (1000*60*60)) / (1000*60));
+let detik = Math.floor((sisa % (1000*60)) / 1000);
+
+document.getElementById("timer").innerHTML =
+menit + " menit " + detik + " detik";
+
+if(sisa < 0){
+clearInterval(hitung);
+document.getElementById("timer").innerHTML = "Waktu sudah tiba 😁";
+document.getElementById("link").style.display = "block";
+}
+
+},1000);
+
+</script>
+
+</body>
+</html>
